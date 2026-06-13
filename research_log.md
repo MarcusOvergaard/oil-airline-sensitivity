@@ -27,6 +27,15 @@ This log records research decisions, data-source notes, assumptions, and validat
 - Created `data/tableau/airline_oil_tableau_dataset.csv` with airline rows only, including matching Brent return and S&P 500 return for each date and frequency.
 - Issue noted: raw daily data contains missing values from different trading calendars and market holidays; after period-end resampling and first-return removal, the return and Tableau outputs contain no missing values.
 
+## Phase 4 - Analysis, Oil Sensitivity, and Oil Shocks
+
+- Implemented and ran `notebooks/03_analysis.ipynb`.
+- Created visuals for normalized monthly performance, weekly correlations, monthly correlations, and oil sensitivity rankings.
+- Estimated simple Brent-return sensitivity regressions for weekly returns, monthly returns, weekly excess returns, and monthly excess returns.
+- Created `data/processed/oil_sensitivity_summary.csv` with alpha, beta, r-squared, p-value, significance flag, beta rank, beta confidence score, and plain-English interpretation.
+- Created `data/processed/oil_shock_summary.csv` using top-20% positive Brent-return periods as oil shocks.
+- Issue noted: explanatory power is generally weak; the strongest relationship is still low-r-squared, so oil sensitivity should be interpreted cautiously.
+
 ## Open Notes
 
 - Hedging classifications are simplified and should be treated as exploratory labels, not definitive current operating facts.
