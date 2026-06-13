@@ -64,6 +64,15 @@ This log records research decisions, data-source notes, assumptions, and validat
 - Added key findings to highlight, misinterpretations to avoid, and a recommended Tableau build order.
 - No Tableau dashboards were built, and no analytical output files were modified.
 
+## Phase 7 - GitHub Portfolio Documentation
+
+- Rewrote `README.md` as a polished GitHub portfolio README with project summary, research question, methodology, key findings, Tableau plan, repository structure, run instructions, limitations, and disclaimer.
+- Added image references for the existing Python-generated visual outputs in `images/`.
+- Created `data_dictionary.md` to explain the main raw, processed, Tableau, and summary files.
+- Created `key_findings.md` to summarize the main conclusions, strongest evidence, limitations, surprises, and future improvements.
+- Validated the final repository structure for portfolio presentation.
+- No analytical outputs were modified, no regressions were rerun, and no new analysis was started.
+
 ## Open Notes
 
 - Hedging classifications are simplified and should be treated as exploratory labels, not definitive current operating facts.
