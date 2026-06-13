@@ -1,0 +1,37 @@
+It should:
+
+Load raw price data
+Extract adjusted close/close prices correctly
+Rename columns from tickers to readable asset names
+Resample to:
+weekly prices
+monthly prices
+Calculate:
+weekly returns
+monthly returns
+Calculate excess returns:
+Airline excess return = airline return - S&P 500 return
+Save outputs:
+data/processed/weekly_returns.csv
+data/processed/monthly_returns.csv
+data/processed/weekly_excess_returns.csv
+data/processed/monthly_excess_returns.csv
+Create a Tableau-ready long-format dataset:
+
+Columns:
+
+date
+frequency
+asset
+asset_type
+region
+business_model
+hedging_profile
+return
+sp500_return
+excess_return
+brent_return
+
+Save it as:
+
+data/tableau/airline_oil_tableau_dataset.csv

@@ -1,0 +1,12 @@
+It should:
+
+Import libraries
+Load tickers from config
+Download adjusted price data from Yahoo Finance using yfinance
+Save raw price data to:
+data/raw/raw_prices.csv
+Show basic inspection:
+.head()
+.info()
+missing values
+date range

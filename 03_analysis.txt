@@ -1,0 +1,39 @@
+It should include:
+
+Normalized price chart
+Weekly correlation matrix
+Monthly correlation matrix
+Oil sensitivity calculation using simple linear regression:
+airline_return = alpha + beta * brent_return
+
+Do this for:
+
+Weekly returns
+Monthly returns
+Excess returns
+
+Save summary table:
+
+data/processed/oil_sensitivity_summary.csv
+
+The summary table should include:
+
+airline
+frequency
+return_type
+alpha
+beta
+r_squared
+p_value
+
+Also create:
+
+Oil shock analysis
+
+Define oil shock weeks/months as periods where Brent return is in the top 20% of positive returns.
+
+Calculate average airline return during oil shock periods.
+
+Save:
+
+data/processed/oil_shock_summary.csv
