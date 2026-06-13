@@ -36,6 +36,16 @@ This log records research decisions, data-source notes, assumptions, and validat
 - Created `data/processed/oil_shock_summary.csv` using top-20% positive Brent-return periods as oil shocks.
 - Issue noted: explanatory power is generally weak; the strongest relationship is still low-r-squared, so oil sensitivity should be interpreted cautiously.
 
+## Phase 4.5 - Market-Controlled Oil Sensitivity
+
+- Added market-controlled regressions to `notebooks/03_analysis.ipynb` because Phase 4 showed weak explanatory power and some positive oil betas.
+- Estimated `Airline Return = alpha + oil_beta × Brent Return + market_beta × S&P 500 Return` for weekly and monthly returns.
+- Created `data/processed/oil_market_sensitivity_summary.csv` and `images/market_controlled_oil_beta_ranking.png`.
+- After controlling for the S&P 500, monthly oil betas were not statistically significant for any airline.
+- Weekly oil beta remained significant for Ryanair and American Airlines only; both were negative.
+- Market beta was statistically significant for all airlines and both frequencies, and it was larger than oil beta in absolute terms in every row.
+- Surprising result: Ryanair's positive monthly oil beta from the simple regression disappeared after market control, suggesting the earlier positive oil relationship was likely market-driven rather than oil-specific.
+
 ## Open Notes
 
 - Hedging classifications are simplified and should be treated as exploratory labels, not definitive current operating facts.
