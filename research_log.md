@@ -16,6 +16,17 @@ This log records research decisions, data-source notes, assumptions, and validat
 - Validation passed: the CSV exists, includes all expected assets, has a `Date` index, and is not empty.
 - Data issue noticed: missing values are present across all assets, likely because of different trading calendars, market holidays, and ticker-specific availability. Missing values were reported but not cleaned in Phase 2.
 
+## Phase 3 - Cleaning, Returns, and Tableau Dataset
+
+- Implemented and ran `notebooks/02_data_cleaning_and_returns.ipynb`.
+- Loaded `data/raw/raw_prices.csv`, parsed `Date`, set it as the index, sorted by date, and validated all expected assets.
+- Missing values were reported but not blindly forward-filled before return calculation.
+- Weekly and monthly prices were built using the last available price in each period; returns were calculated from those resampled price series.
+- Created airline excess returns as airline return minus S&P 500 return.
+- Created `data/processed/weekly_returns.csv`, `data/processed/monthly_returns.csv`, `data/processed/weekly_excess_returns.csv`, and `data/processed/monthly_excess_returns.csv`.
+- Created `data/tableau/airline_oil_tableau_dataset.csv` with airline rows only, including matching Brent return and S&P 500 return for each date and frequency.
+- Issue noted: raw daily data contains missing values from different trading calendars and market holidays; after period-end resampling and first-return removal, the return and Tableau outputs contain no missing values.
+
 ## Open Notes
 
 - Hedging classifications are simplified and should be treated as exploratory labels, not definitive current operating facts.
