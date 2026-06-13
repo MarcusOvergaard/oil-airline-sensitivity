@@ -55,6 +55,15 @@ This log records research decisions, data-source notes, assumptions, and validat
 - Final readiness status: ready for Tableau dashboard building.
 - Limitation noted: validation confirms schema, completeness, coverage, and basic type integrity; it does not re-run the underlying analytical regressions.
 
+## Phase 6 - Findings-Driven Tableau Dashboard Plan
+
+- Updated `tableau/dashboard_plan.md` to reflect the actual project findings rather than the original hypothesis-first dashboard outline.
+- Reframed the Tableau story around the main analytical result: market exposure dominates oil exposure after controlling for the S&P 500.
+- Specified five dashboards: Project Overview, Simple Oil Sensitivity, Market-Controlled Sensitivity, Oil Shock Analysis, and Final Findings.
+- Added dashboard-level purpose, charts, filters, key metrics, and user questions answered.
+- Added key findings to highlight, misinterpretations to avoid, and a recommended Tableau build order.
+- No Tableau dashboards were built, and no analytical output files were modified.
+
 ## Open Notes
 
 - Hedging classifications are simplified and should be treated as exploratory labels, not definitive current operating facts.
