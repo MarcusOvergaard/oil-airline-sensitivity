@@ -46,6 +46,15 @@ This log records research decisions, data-source notes, assumptions, and validat
 - Market beta was statistically significant for all airlines and both frequencies, and it was larger than oil beta in absolute terms in every row.
 - Surprising result: Ryanair's positive monthly oil beta from the simple regression disappeared after market control, suggesting the earlier positive oil relationship was likely market-driven rather than oil-specific.
 
+## Phase 5 - Tableau Export Validation
+
+- Implemented and ran `notebooks/04_tableau_export_validation.ipynb`.
+- Validated `data/tableau/airline_oil_tableau_dataset.csv`, `data/processed/oil_sensitivity_summary.csv`, `data/processed/oil_shock_summary.csv`, and `data/processed/oil_market_sensitivity_summary.csv`.
+- Created `data/processed/tableau_validation_report.md`.
+- Validation passed for file existence, required columns, row counts, missing values, frequency coverage, airline coverage, numeric fields, date parsing, and populated classification fields.
+- Final readiness status: ready for Tableau dashboard building.
+- Limitation noted: validation confirms schema, completeness, coverage, and basic type integrity; it does not re-run the underlying analytical regressions.
+
 ## Open Notes
 
 - Hedging classifications are simplified and should be treated as exploratory labels, not definitive current operating facts.
