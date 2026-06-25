@@ -117,19 +117,9 @@ After controlling for overall market movements, none of the airlines exhibits a 
 
 **What this shows**
 
-This scatter plot compares each airline's exposure to the overall equity market (market beta) with its exposure to Brent crude oil prices (oil beta) using the market-controlled regression model. All four airlines exhibit market betas that are substantially larger than their oil betas, illustrating that broad market movements have a much greater influence on airline stock returns than changes in oil prices.
-
-This visualization provides a concise summary of the project's primary conclusion: after accounting for overall market performance, oil prices explain relatively little of the variation in airline stock returns.
+This scatter plot directly compares each airline's market beta with its oil beta. All four airlines exhibit market betas substantially larger than their oil betas, visually reinforcing the conclusion that overall equity-market movements have a much greater influence on airline stock returns than oil prices.
 
 ---
-
-### Market Beta vs. Oil Beta
-
-![Market beta vs oil beta](images/market_vs_oil_beta_scatter.png)
-
-**What this shows**
-
-This scatter plot directly compares each airline's market beta with its oil beta. All four airlines exhibit market betas substantially larger than their oil betas, visually reinforcing the conclusion that overall equity-market movements have a much greater influence on airline stock returns than oil prices.
 
 ## Tableau Dashboards
 
