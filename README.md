@@ -1,6 +1,8 @@
 # Fuel, Hedging, and Business Models: Airline Stock Sensitivity to Oil
 
-A Python and Tableau portfolio project testing whether airline stocks are as sensitive to Brent crude oil returns as investors often assume.
+**A Python and Tableau portfolio project investigating whether airline stocks are driven more by Brent crude oil prices or by the broader equity market.**
+
+Interactive Tableau dashboards: [(https://public.tableau.com/app/profile/marcus.timm/vizzes)]
 
 ## Research Question
 
@@ -23,167 +25,141 @@ The result is more nuanced: oil matters in some cases, but broad equity-market e
 - matplotlib
 - seaborn
 - Jupyter Notebook
-- Tableau planning assets
+- Tableau
 - Git / GitHub
 
-## Dataset and Assets
+## Dataset
 
-Data source: Yahoo Finance via `yfinance`.
+Historical daily price data was collected from Yahoo Finance using the `yfinance` library.
 
-Time period: from `2018-01-01` through the latest available data at collection time.
+Period:
+2018-01-01 to latest available.
 
-Assets analyzed:
+Assets:
 
-| Type | Asset | Ticker | Notes |
-|---|---|---:|---|
-| Oil benchmark | Brent Crude Oil Futures | `BZ=F` | Main oil-price proxy |
-| Market benchmark | S&P 500 | `^GSPC` | Used for excess returns and market control |
-| Airline | Ryanair | `RYAAY` | Europe, low-cost, historically higher hedging |
-| Airline | Lufthansa | `LHA.DE` | Europe, legacy, mixed/moderate hedging |
-| Airline | Southwest Airlines | `LUV` | United States, low-cost, historically strong hedging |
-| Airline | American Airlines | `AAL` | United States, legacy, historically lower hedging |
-
-Primary Tableau-ready file:
-
-- `data/tableau/airline_oil_tableau_dataset.csv`
-
-Validated summary files:
-
-- `data/processed/oil_sensitivity_summary.csv`
-- `data/processed/oil_market_sensitivity_summary.csv`
-- `data/processed/oil_shock_summary.csv`
-- `data/processed/tableau_validation_report.md`
+| Asset | Ticker |
+|--------|--------|
+| Brent Crude Oil | BZ=F |
+| S&P 500 | ^GSPC |
+| Ryanair | RYAAY |
+| Lufthansa | LHA.DE |
+| Southwest Airlines | LUV |
+| American Airlines | AAL |
 
 ## Methodology
 
-1. Download adjusted price data from Yahoo Finance.
-2. Resample prices into weekly and monthly series.
-3. Calculate airline, Brent, and S&P 500 returns.
-4. Calculate airline excess returns:
+1. Download historical prices from Yahoo Finance.
+2. Calculate weekly and monthly returns.
+3. Compute airline excess returns relative to the S&P 500.
+4. Estimate simple and market-controlled regression models.
+5. Analyze airline performance during oil shock periods.
+6. Visualize and validate the results using Python and Tableau.
 
-   `Excess Return = Airline Return - S&P 500 Return`
+## Project Workflow
 
-5. Estimate simple oil sensitivity:
+Raw Market Data
+↓
+Weekly & Monthly Returns
+↓
+Excess Returns
+↓
+Regression Analysis
+↓
+Market-Controlled Regression
+↓
+Tableau Dashboard & Final Findings
 
-   `Airline Return = alpha + beta * Brent Return`
+## Visual Findings
 
-6. Estimate market-controlled sensitivity:
+### Normalized Performance
 
-   `Airline Return = alpha + oil_beta * Brent Return + market_beta * S&P 500 Return`
+![Normalized performance](images/normalized_performance.png)
 
-7. Analyze oil-shock periods, defined as the top 20% of positive Brent-return periods.
-8. Validate Tableau export files for completeness, schema quality, missing values, frequency coverage, airline coverage, and numeric fields.
+**What this shows**
+
+This chart compares the cumulative performance of Brent crude oil, the four airline stocks, and the S&P 500 using a common starting value of 100. Although Brent experienced substantial price swings throughout the sample period, airline performance varied considerably across companies. This suggests that factors beyond oil prices play an important role in determining long-term airline stock returns.
+
+---
+
+### Monthly Correlation Matrix
+
+![Monthly correlation heatmap](images/monthly_correlation_heatmap.png)
+
+**What this shows**
+
+Monthly correlations reveal that airline stocks are much more closely correlated with one another and with the S&P 500 than with Brent oil. Brent exhibits only weak positive correlations with the airlines, providing an early indication that oil alone explains little of their return variation.
+
+---
+
+### Weekly Correlation Matrix
+
+![Weekly correlation heatmap](images/weekly_correlation_heatmap.png)
+
+**What this shows**
+
+Weekly correlations between Brent and airline returns are even weaker than the monthly relationships. Short-term price movements appear dominated by market noise, while relationships among airline stocks remain comparatively stronger.
+
+---
+
+### Market-Controlled Oil Beta Ranking
+
+![Market-controlled oil beta ranking](images/market_controlled_oil_beta_ranking.png)
+
+**What this shows**
+
+After controlling for overall market movements, none of the airlines exhibits a statistically significant monthly oil beta. This supports the project's central finding that broad market exposure explains airline returns much better than Brent crude oil prices.
+
+---
+
+### Market Exposure vs. Oil Exposure
+
+![Market Exposure vs. Oil Exposure](images/market_exposure_vs_oil_exposure.png)
+
+**What this shows**
+
+This scatter plot compares each airline's exposure to the overall equity market (market beta) with its exposure to Brent crude oil prices (oil beta) using the market-controlled regression model. All four airlines exhibit market betas that are substantially larger than their oil betas, illustrating that broad market movements have a much greater influence on airline stock returns than changes in oil prices.
+
+This visualization provides a concise summary of the project's primary conclusion: after accounting for overall market performance, oil prices explain relatively little of the variation in airline stock returns.
+
+---
+
+### Market Beta vs. Oil Beta
+
+![Market beta vs oil beta](images/market_vs_oil_beta_scatter.png)
+
+**What this shows**
+
+This scatter plot directly compares each airline's market beta with its oil beta. All four airlines exhibit market betas substantially larger than their oil betas, visually reinforcing the conclusion that overall equity-market movements have a much greater influence on airline stock returns than oil prices.
+
+## Tableau Dashboards
+
+In addition to the Python analysis, two interactive Tableau dashboards were created to summarize the project and communicate the regression results.
+
+### Dashboard 1 — Project Overview
+
+![Dashboard 1](images/tableau_dashboard_overview.png)
+
+Provides an overview of the project, including the airlines analyzed, their business models, regions, and historical hedging classifications.
+
+---
+
+### Dashboard 2 — Market-Controlled Regression Results
+
+![Dashboard 2](images/tableau_dashboard_market_controlled.png)
+
+This dashboard summarizes the market-controlled regression analysis, comparing each airline's oil beta with its market beta after controlling for overall equity market movements. It serves as the primary Tableau visualization supporting the project's main conclusion.
 
 ## Key Findings
 
 - Market exposure dominates oil exposure after controlling for the S&P 500.
-- Monthly oil beta is not statistically significant for any airline after market control.
-- Market beta is statistically significant for all four airlines across both weekly and monthly frequencies.
-- Weekly oil beta remains statistically significant only for Ryanair and American Airlines, and both relationships are negative.
-- Simple oil sensitivity is weak and inconsistent. The strongest simple relationships still have low R² values.
-- The original “oil hurts airlines” assumption is too simplistic. Airline stocks appear to reflect broader market forces more than Brent oil returns alone.
-- Ryanair’s positive monthly simple oil beta disappears after market control, suggesting the simple result was likely market-driven rather than oil-specific.
-- Oil-shock findings depend on frequency: monthly oil-shock excess returns were positive for Southwest, Lufthansa, and Ryanair, while weekly oil-shock excess returns were negative for all four airlines.
+- Monthly oil beta is not statistically significant for any airline in the market-controlled model.
+- Market beta is statistically significant for all airlines and substantially larger than oil beta.
+- Weekly oil sensitivity remains significant only for Ryanair and American Airlines.
+- The common assumption that airline stocks are primarily driven by oil prices is not supported by the data.
 
-## Selected Visual Outputs
+## Final Conclusion
 
-The project includes Python-generated visuals in `images/`:
-
-![Normalized performance](images/normalized_performance.png)
-
-![Weekly correlation heatmap](images/weekly_correlation_heatmap.png)
-
-![Monthly correlation heatmap](images/monthly_correlation_heatmap.png)
-
-![Simple oil sensitivity ranking](images/oil_sensitivity_ranking.png)
-
-![Market-controlled oil beta ranking](images/market_controlled_oil_beta_ranking.png)
-
-## Tableau Dashboard Plan
-
-The Tableau story is designed around actual findings rather than the original hypotheses.
-
-Planned dashboards:
-
-1. Project Overview
-2. Simple Oil Sensitivity
-3. Market-Controlled Sensitivity
-4. Oil Shock Analysis
-5. Final Findings
-
-Full specification:
-
-- `tableau/dashboard_plan.md`
-
-## Repository Structure
-
-```text
-.
-├── data/
-│   ├── raw/
-│   │   └── raw_prices.csv
-│   ├── processed/
-│   │   ├── weekly_returns.csv
-│   │   ├── monthly_returns.csv
-│   │   ├── weekly_excess_returns.csv
-│   │   ├── monthly_excess_returns.csv
-│   │   ├── oil_sensitivity_summary.csv
-│   │   ├── oil_market_sensitivity_summary.csv
-│   │   ├── oil_shock_summary.csv
-│   │   └── tableau_validation_report.md
-│   └── tableau/
-│       └── airline_oil_tableau_dataset.csv
-├── images/
-├── notebooks/
-│   ├── 01_data_collection.ipynb
-│   ├── 02_data_cleaning_and_returns.ipynb
-│   ├── 03_analysis.ipynb
-│   └── 04_tableau_export_validation.ipynb
-├── src/
-│   └── config.py
-├── tableau/
-│   └── dashboard_plan.md
-├── data_dictionary.md
-├── key_findings.md
-├── project_plan.md
-├── research_log.md
-├── requirements.txt
-└── README.md
-```
-
-## How to Run the Project
-
-From the project root:
-
-```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-```
-
-Run the notebooks in order:
-
-```bash
-jupyter notebook notebooks/01_data_collection.ipynb
-jupyter notebook notebooks/02_data_cleaning_and_returns.ipynb
-jupyter notebook notebooks/03_analysis.ipynb
-jupyter notebook notebooks/04_tableau_export_validation.ipynb
-```
-
-Or execute them with `nbconvert` from the repository root:
-
-```bash
-jupyter nbconvert --to notebook --execute --inplace notebooks/01_data_collection.ipynb
-jupyter nbconvert --to notebook --execute --inplace notebooks/02_data_cleaning_and_returns.ipynb
-jupyter nbconvert --to notebook --execute --inplace notebooks/03_analysis.ipynb
-jupyter nbconvert --to notebook --execute --inplace notebooks/04_tableau_export_validation.ipynb
-```
-
-The final Tableau-ready dataset is:
-
-```text
-data/tableau/airline_oil_tableau_dataset.csv
-```
+Airline stock returns appear to be driven far more by broad market movements than by Brent crude oil prices. While simple regressions initially suggested some oil sensitivity, these relationships largely disappeared after controlling for overall market performance.
 
 ## Limitations
 
@@ -193,8 +169,29 @@ data/tableau/airline_oil_tableau_dataset.csv
 - Hedging classifications are simplified and may not reflect each airline’s exact hedge book through time.
 - The sample is limited to four airlines.
 - Weekly results are noisier than monthly results.
-- Public market data can contain calendar effects, holidays, and ticker-specific availability issues.
+
+## Skills Demonstrated
+
+- Financial data collection with Python
+- Data cleaning and transformation using pandas
+- Time-series return analysis
+- Linear regression and statistical interpretation
+- Market-adjusted performance analysis
+- Financial data visualization with Matplotlib
+- Interactive dashboard development with Tableau
+- Data validation and quality assurance
+- Git version control and technical documentation
+
+## How to Run
+
+````markdown
+```bash
+pip install -r requirements.txt
+jupyter notebook
+
+- Run the notebooks in numerical order (01 → 04).
 
 ## Disclaimer
 
-This project is for educational and portfolio purposes only. It is exploratory analysis, not investment advice, and should not be used as the sole basis for any investment decision.
+This project was created for educational and portfolio purposes. The analysis is exploratory and should not be considered investment advice.
+
