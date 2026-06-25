@@ -174,14 +174,16 @@ Airline stock returns appear to be driven far more by broad market movements tha
 
 ## How to Run
 
-````markdown
 ```bash
 pip install -r requirements.txt
 jupyter notebook
+```
 
-- Run the notebooks in numerical order (01 → 04).
+Run the notebooks in numerical order (`01` → `04`).
 
 ## Disclaimer
 
 This project was created for educational and portfolio purposes. The analysis is exploratory and should not be considered investment advice.
+
+---
 
