@@ -1,18 +1,12 @@
 # Fuel, Hedging, and Business Models: Airline Stock Sensitivity to Oil
 
-**A Python and Tableau portfolio project investigating whether airline stocks are driven more by Brent crude oil prices or by the broader equity market.**
+**A Python and Tableau portfolio project exploring how sensitive airline stocks are to oil prices and the broader stock market.**
 
 Interactive Tableau dashboards: [(https://public.tableau.com/app/profile/marcus.timm/vizzes)]
 
-## Research Question
+## Project Overview
 
-How sensitive are different airline business models to changes in oil prices?
-
-## Why This Project Matters
-
-Fuel is one of the most visible costs in the airline industry, so it is tempting to assume that rising oil prices automatically hurt airline stocks. This project tests that assumption using market data, weekly and monthly returns, excess returns versus the S&P 500, oil-shock periods, and market-controlled regression models.
-
-The result is more nuanced: oil matters in some cases, but broad equity-market exposure explains much more of the observed airline stock movement.
+This project investigates whether airline stocks are driven more by Brent crude oil prices or by the broader equity market.
 
 ## Tools Used
 
@@ -28,23 +22,32 @@ The result is more nuanced: oil matters in some cases, but broad equity-market e
 - Tableau
 - Git / GitHub
 
+## Skills Demonstrated
+
+- Financial data collection with Python
+- Data cleaning and transformation using pandas
+- Time-series return analysis
+- Linear regression and statistical interpretation
+- Market-adjusted performance analysis
+- Financial data visualization with Matplotlib
+- Interactive dashboard development with Tableau
+- Data validation and quality assurance
+- Git version control and technical documentation
+
 ## Dataset
 
-Historical daily price data was collected from Yahoo Finance using the `yfinance` library.
+Historical daily price data was downloaded from Yahoo Finance using the `yfinance` library.
 
-Period:
-2018-01-01 to latest available.
+Period: 2018-01-01 to latest available.
 
-Assets:
+Assets analyzed:
 
-| Asset | Ticker |
-|--------|--------|
-| Brent Crude Oil | BZ=F |
-| S&P 500 | ^GSPC |
-| Ryanair | RYAAY |
-| Lufthansa | LHA.DE |
-| Southwest Airlines | LUV |
-| American Airlines | AAL |
+- Brent Crude Oil
+- S&P 500
+- Ryanair
+- Lufthansa
+- Southwest Airlines
+- American Airlines
 
 ## Methodology
 
@@ -65,7 +68,7 @@ Excess Returns
 ↓
 Regression Analysis
 ↓
-Market-Controlled Regression
+Market-Controlled Models
 ↓
 Tableau Dashboard & Final Findings
 
@@ -77,7 +80,7 @@ Tableau Dashboard & Final Findings
 
 **What this shows**
 
-This chart compares the cumulative performance of Brent crude oil, the four airline stocks, and the S&P 500 using a common starting value of 100. Although Brent experienced substantial price swings throughout the sample period, airline performance varied considerably across companies. This suggests that factors beyond oil prices play an important role in determining long-term airline stock returns.
+Brent experienced large price swings, but airline performance differed across companies. This suggests that factors beyond oil prices influence long-term airline returns.
 
 ---
 
@@ -87,7 +90,7 @@ This chart compares the cumulative performance of Brent crude oil, the four airl
 
 **What this shows**
 
-Monthly correlations reveal that airline stocks are much more closely correlated with one another and with the S&P 500 than with Brent oil. Brent exhibits only weak positive correlations with the airlines, providing an early indication that oil alone explains little of their return variation.
+Airline stocks are more closely correlated with each other and with the S&P 500 than with Brent oil. This suggests oil alone explains little of their return variation.
 
 ---
 
@@ -97,7 +100,7 @@ Monthly correlations reveal that airline stocks are much more closely correlated
 
 **What this shows**
 
-Weekly correlations between Brent and airline returns are even weaker than the monthly relationships. Short-term price movements appear dominated by market noise, while relationships among airline stocks remain comparatively stronger.
+Weekly relationships between Brent and airline returns are even weaker than the monthly results, suggesting short-term movements are dominated by market noise.
 
 ---
 
@@ -107,7 +110,7 @@ Weekly correlations between Brent and airline returns are even weaker than the m
 
 **What this shows**
 
-After controlling for overall market movements, none of the airlines exhibits a statistically significant monthly oil beta. This supports the project's central finding that broad market exposure explains airline returns much better than Brent crude oil prices.
+After controlling for market movements, none of the airlines has a statistically significant monthly oil beta. Market exposure explains airline returns much better than oil prices.
 
 ---
 
@@ -117,19 +120,17 @@ After controlling for overall market movements, none of the airlines exhibits a 
 
 **What this shows**
 
-This scatter plot directly compares each airline's market beta with its oil beta. All four airlines exhibit market betas substantially larger than their oil betas, visually reinforcing the conclusion that overall equity-market movements have a much greater influence on airline stock returns than oil prices.
+All four airlines have much larger market betas than oil betas, reinforcing that the broader market has a greater influence than oil prices.
 
 ---
 
 ## Tableau Dashboards
 
-In addition to the Python analysis, two interactive Tableau dashboards were created to summarize the project and communicate the regression results.
-
 ### Dashboard 1 — Project Overview
 
 ![Dashboard 1](images/tableau_dashboard_overview.png)
 
-Provides an overview of the project, including the airlines analyzed, their business models, regions, and historical hedging classifications.
+A summary of the airlines, business models, regions, and hedging classifications.
 
 ---
 
@@ -137,7 +138,7 @@ Provides an overview of the project, including the airlines analyzed, their busi
 
 ![Dashboard 2](images/tableau_dashboard_market_controlled.png)
 
-This dashboard summarizes the market-controlled regression analysis, comparing each airline's oil beta with its market beta after controlling for overall equity market movements. It serves as the primary Tableau visualization supporting the project's main conclusion.
+A comparison of market beta and oil beta for each airline.
 
 ## Key Findings
 
@@ -149,7 +150,7 @@ This dashboard summarizes the market-controlled regression analysis, comparing e
 
 ## Final Conclusion
 
-Airline stock returns appear to be driven far more by broad market movements than by Brent crude oil prices. While simple regressions initially suggested some oil sensitivity, these relationships largely disappeared after controlling for overall market performance.
+Airline stock returns appear to be driven far more by broad market movements than by Brent crude oil prices. Although the initial analysis suggested some oil sensitivity, those relationships largely disappeared after controlling for market performance.
 
 ## Limitations
 
@@ -160,30 +161,17 @@ Airline stock returns appear to be driven far more by broad market movements tha
 - The sample is limited to four airlines.
 - Weekly results are noisier than monthly results.
 
-## Skills Demonstrated
-
-- Financial data collection with Python
-- Data cleaning and transformation using pandas
-- Time-series return analysis
-- Linear regression and statistical interpretation
-- Market-adjusted performance analysis
-- Financial data visualization with Matplotlib
-- Interactive dashboard development with Tableau
-- Data validation and quality assurance
-- Git version control and technical documentation
-
 ## How to Run
 
 ```bash
 pip install -r requirements.txt
 jupyter notebook
 ```
-
 Run the notebooks in numerical order (`01` → `04`).
 
 ## Disclaimer
 
-This project was created for educational and portfolio purposes. The analysis is exploratory and should not be considered investment advice.
+This project was created for educational and portfolio purposes and should not be considered investment advice.
 
 ---
 
